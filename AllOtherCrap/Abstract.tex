@@ -1,0 +1,26 @@
+\chapter*{Abstract}
+%The abstract is typically not included as a numbered section. Hence, putting an asterisk after the \chapter command prevents this section from being numbered.
+
+\LaTeX{} is an extremely powerful and efficient tool for scientific writing. However, as with all software, there is a bit of a learning curve involved. With \LaTeX{}, the biggest (and perhaps only) learning curve is that it does not have graphical user interface. All formatting commands such as \textbf{boldfacing}, \textit{italicizing}, {\tiny changing font size on the fly}, text\textsubscript{subscripting}, $m=a^t_h$, etc. have to be entered as plain-text code: \verb|\textbf{boldfacing}|, \verb|\textit{italicizing}|, \verb|{\tiny changing font size on the fly}|, \verb|text\textsubscript{subscripting}|, \verb|$m=a^t_h$|. Seems cumbersome, right? Why type the extra commands, when you can instead select the text you wish to modify, and just click a button in your writing software?
+
+The thing is, scientific documents such as manuscripts, dissertations, and books are often ``complex''. What I mean by that is they are not just text documents. They have plenty of figures, tables, equations, chapters, sections, subsections, literature references etc. In theory, typical writing software like MS Word and Libre Writer have the capability to handle this. But in practice, as the complexity of a document increases, these software are prone to several issues:
+
+\begin{enumerate}
+\item Crashing without auto-saving, because of too much memory/processor load
+\item Messing up numbering of figures, tables, sections, equations, etc. when document is opened.
+\item Compatibility issues with citation software like Mendeley.
+\item Complex equations written in companion software like MathType (for MS Word) and Math Formula (for Libre Writer) just don't look aesthetic. The fonts look different, the subscripting and superscripting is all off, and ... well it just doesn't look pretty.
+\item Inter-computer compatibility issues i.e., the document looks a certain way on your computer, but when you send it to someone else, it looks different on their computer for a variety of reasons such as you have a Mac, but they have Windows.
+\item Updating in-text references to figures, tables, etc. is cumbersome and requires user to manually double-check every one of them even though Word is supposed to do it automatically.
+\end{enumerate}
+
+Instead, \LaTeX{} simplifies things incredibly. Here's a point-by-point list of how \LaTeX{} is a solution to these issues:
+
+\begin{enumerate}
+\item The reason Word crashes is that it is not only trying to keep the text of the document on memory (while you are editing the file), but it is also trying to keep all formatting, figures, references, equations, captions, etc. preserved while letting you edit them in real time. Instead, \LaTeX{} separates these two processes. The user only enters the text and the commands for formatting, importing figures, etc. are entered as plain text. All of this knitted together only when the \LaTeX{} code is compiled, and the output is a clean PDF. The few seconds it takes for \LaTeX{} to compile a code is the only time during which your machine's processing power is used by \LaTeX{}.
+\item The reason Word messes up numbering is that it refreshes all numbering when the file is first opened. Instead, \LaTeX{} generates a PDF wherein all numbering is ``locked in'', and not refreshed when the PDF file is opened.
+\item \LaTeX{} has no need to ``talk'' to your citation manager.
+\item \LaTeX{} uses the same font for its text, as it does for its math. And \LaTeX{} is built to accept math commands of a wide range of complexities.
+\item \LaTeX{} generates a PDF, which by definition is a ``portable document format'' and thus it looks exactly the same on all computers, irrespective of what OS they are using (Mac, Linux, Windows, etc.), what PDF reader they are using, etc.
+\item \LaTeX{} only processes cross-references at the time of compiling, and thus relieves the user of the task of double-checking the referencing (as long as there were no typos in the referencing commands in the first place).
+\end{enumerate}

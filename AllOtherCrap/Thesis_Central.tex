@@ -1,0 +1,80 @@
+%Everything before the \begin{document} command is known as a "Preamble". It does not show up in the output document, but this is essentially the control center of your document. This is where you define your default font style and font size (everything can be changed later, as needed), define your bibliography style, import different packages like a package for writing chemical equations, a package for including click-able internet links, etc.
+
+\documentclass[12pt]{report} %set default font size and document type. This should be the first executable line of the preamble.
+
+%%%%%% TYPESETTING PACKAGES %%%%%%%
+\usepackage[margin=1in]{geometry} %set margins of 1 inch
+\usepackage[english]{babel} %for specifying language rules (I think; unsure why this is required)
+\usepackage[hidelinks,bookmarksopen=true,bookmarksnumbered=true]{hyperref} % to make all citations active links and hide hideous green borders around them
+\usepackage[font=small, figurename=Fig.]{caption} %for figure and table caption font style. If not used, default font will be used.
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}%allows footnotes with special symbols
+\usepackage{graphicx} %to import figures
+\usepackage{setspace} %to dynamically change line spacing, if needed.
+\doublespacing %default line spacing of entire document set to double-spaced (typical for dissertations)
+\usepackage{parskip} %new paragraph is separated from previous paragraph by additional vertical spacing, in addition to typical horizontal indentation of first line
+\setlength{\parindent}{15pt}
+\usepackage{etaremune} %reversed enumeration
+
+%%%%%% MATH PACKAGES %%%%%%%
+\usepackage{amsmath,esint} %for math
+
+%%%%%% BIBLIOGRAPHY PACKAGES %%%%%%%
+\usepackage[compress,authoryear]{natbib} %this is the basic bibliography package, and the [arguments] specify citation style i.e., author-year versus superscripted number, etc.
+\usepackage[sectionbib]{chapterbib} %this is to make sure each chapter's references show up at the end of the chapter, and not all together at the end of the thesis
+\usepackage{bibentry} %package for various different ways of placing in-text citations
+\bibliographystyle{apalike} %bibliography style used in the "references" section
+
+%%%%%% PDF OUTPUT PACKAGES %%%%%%%
+\usepackage{bookmark} %for having clickable bookmarks in the output PDF outline
+
+%%%%%% CHEMISTRY PACKAGES %%%%%%%
+\usepackage{chemmacros} %to write chemical reactions
+\usepackage{chemfig} %to draw chemical structures
+
+%%%%%% OTHER, OPTIONAL PACKAGES %%%%%%%
+%NOTE: these are just some example packages you might need. There are lots more packages available for variety of needs
+
+%\usepackage{lipsum} % for creating fake text as a placeholder
+%\usepackage{tikz} % for creating graphics such as flowcharts
+%\usepackage{tcolorbox} %for highlighting text
+%\usepackage{xcolor} %for using color names
+%\usepackage{siunitx} %for writing numbers and units consistent with the SI system
+\usepackage{gensymb} %symbols like degree for temperature
+%\usepackage{wrapfig} %to wrap text around a small figure
+%\usepackage{framed} %frame figures with a box
+
+\begin{document}
+
+% Setting page number to Roman because Arabic numbering usually does not begin until after all the preface items e.g., abstract, table of contents, etc.
+\pagenumbering{roman}
+
+%Creating a bookmark so the output PDF will have this section show up in the outline panel.
+\pdfbookmark[section]{Title Page}{Title Page}
+
+%The include command calls another .tex file.
+\include{TitleAndCopyright}
+\newpage
+
+\pdfbookmark[subsection]{Acknowledgements}{Acknowledgements}
+\include{Thanks}
+
+\pdfbookmark[section]{Abstract}{Abstract}
+\include{Abstract}
+
+\pdfbookmark[section]{Contents}{Contents}
+\tableofcontents
+
+\pdfbookmark[section]{List of Figures}{List of Figures}
+\listoffigures
+
+\begingroup
+\pdfbookmark[section]{List of Tables}{List of Tables}
+\listoftables
+\endgroup
+
+\newpage
+\pagenumbering{arabic}
+
+\include{ch01/ch01}
+
+\end{document}

@@ -1,0 +1,13 @@
+\gdef \the@ipfilectr {@-1}
+\select@language {english}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-2}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-3}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-4}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces A figure}}{3}{figure.caption.6}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Another figure}}{4}{figure.caption.7}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Short caption for chemistry}}{7}{figure.caption.10}
+\gdef \the@ipfilectr {}

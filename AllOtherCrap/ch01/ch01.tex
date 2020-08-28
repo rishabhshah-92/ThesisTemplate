@@ -1,0 +1,173 @@
+\chapter{Chapter name}
+\section{A section on math}\label{math-sec}
+To activate in-line math mode, enclose math within dollar signs. So, if your code has \verb|$\alpha^2 = 10\beta_{s}^{0.8}$|, \LaTeX{} will interpret it as $\alpha^2 = 10\beta_{s}^{0.8}$.
+
+You can also insert complicated math using the \verb|align| environment like below:
+
+\begin{align*}
+  \iiint\limits_V(\nabla \cdot \mathbf{F}) dV
+      & = \oiint \limits_{S(V)} \mathbf{F \cdot \hat{n}} dS \\
+  \iiint\limits_V(\nabla \times \mathbf{F}) dV
+      & = \oiint \limits_{S(V)} \mathbf{\hat{n} \times F} dS \\
+  \iiint\limits_V(\nabla f) dV
+      & = \oiint\limits_{S(V)}\mathbf{\hat{n}}f dS
+\end{align*}
+
+If you want the equations to be numbered, use the \verb|\begin{align}| command instead of \verb|\begin{align*}|. The \verb|\label| command declares the unique key to be used for referring to this equation, as shown in Equations \ref{eq-omega1} and \ref{eq-omega2}.
+
+\begin{align}
+S(\omega)
+&= \frac{\alpha g^2}{\omega^5} e^{[ -0.74\bigl\{\frac{\omega U_\omega 19.5}{g}\bigr\}^{\!-4}\,]}\label{eq-omega1} \\
+&= \frac{\alpha g^2}{\omega^5} \exp\Bigl[ -0.74\Bigl\{\frac{\omega U_\omega 19.5}{g}\Bigr\}^{\!-4}\,\Bigr]\label{eq-omega2} 
+\end{align}
+
+\section{A section on citing literature}\label{citing-sec}
+\subsection{Preparing your .bib file} \label{sec:prepping_bib}
+To include citations, first add them to the \verb|ch01_REFS.bib| file in a specific format called ``BibTeX'' format. The easiest way to do this is from a citation managing software (e.g., in Mendeley, right-click on any paper and select ``Copy As $ > $ Bibtex entry''. Next, open the \verb|ch01_REFS.bib| file in your TeX editor, and paste the BibTeX entry at the end. It should look something like this:
+
+\begin{center}
+\includegraphics[width=\linewidth]{"ch01/bib_example"}
+\end{center}
+
+The \verb|Shah2020| that appears at the top of the BibTeX record is called a ``cite key''.
+\textbf{Warning:} No two records in the \verb|ch01_REFS.bib| can have the same cite key!
+
+\subsection{Get citing}
+To cite the study shown in Section \ref{sec:prepping_bib}, you should type the command \verb|\citep{Shah2020}|. Sometimes you may want to cite a paper at the end of a sentence \citep{Shah2020}. But sometimes, you might also insert a citation as part of sentence, such as \citet{Shah2020}. Sometimes, you might want to cite multiple references altogether inside one set of parantheses \citep{Shah2018,Shah2020,Robinson2019}. \LaTeX{} identifies papers by the same author, and compresses them together i.e., instead of (Shah et al. 2018, Shah et al. 2020), it writes \citep{Shah2018,Shah2020}. Sometimes, you may want to cite a study in text that is already in parantheses (e.g., the study by \citep{Shah2018} was about air pollution). If you want, you can avoid double parantheses as follows: \cite[e.g., the study by][was about air pollution]{Shah2018}.
+
+\section{A section on embedding figures}\label{figures-sec}
+As shown in Figures \ref{fig:plot-label} and \ref{fig:plot2-label}, data visualization is an art. The code for importing figures is fairly self-explanatory.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.7\linewidth]{"ch01/Some_Plot"}
+\caption[A figure]{This is a detailed figure caption, describing what the figure shows. A general good practice: a figure and its caption, together, should be self-sufficient in conveying the message. The reader should not have to look for further explanation of the figure in the text.}
+\label{fig:plot-label}
+\end{figure}
+
+The \verb|[!h]| flag after the \verb|\begin{figure}| command forces \LaTeX{} to place the Figure exactly where it appears in the code. If this flag is not included, \LaTeX{} will try to place the Figure where it ``fits'' best. Other options instead of \verb|!h| include \verb|!b| (bottom of page), \verb|!t| (top of page), etc.
+
+The \verb|\caption| command takes two arguments: the first one (in square brackets) is a short caption, while the second one (in curly brackets) is a detailed caption. The short caption appears in the List of Figures. The detailed caption appears directly beneath the Figure.
+
+As always, the \verb|\label| command declares the unique key to be used for referring to this Figure.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.7\linewidth]{"ch01/Some_Other_Plot"}
+\caption[Another figure]{This is a detailed figure caption for another figure, describing what the figure shows. Fun fact: this figure was prepared in RStudio open-source software, just like Figure \ref{fig:plot-label} (yes, you can have a reference to another Figure inside a Figure caption; try doing that in Word!).}
+\label{fig:plot2-label}
+\end{figure}
+
+\section{A section on tables}\label{tables-sec}
+A table can be created pretty easily in \LaTeX{}, as shown in Table \ref{tab:simpletable}. The number of times $\vert$\verb| c |$\vert$ is entered after the \verb|\begin\{tabular}| command declares the number of columns to be used. The \verb|c| stands for ``center'' justification. Other options can be \verb|l| for left, and \verb|r| for right.
+
+As with Figure captioning, there is a short caption (in square brackets; this shows up in List of Tables), and a long caption (in curly brackets; this shows up at the top of the Table). While Figure captions are typically placed below the figure, the convention for Table captions is to place them on top of Tables. This can be achieved by simply moving the \verb|\caption| command as shown in the code for Table \ref{tab:complextable}.
+
+\begin{table}[!h]
+\begin{center}
+  \begin{tabular}{| c | c | c |}
+    \hline
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & 9 \\
+    \hline
+  \end{tabular}
+\caption[A small, simple table]{A table of alphabets. Though this caption is supposed to be detailed, I cannot think of a way to put more text here.}
+\label{tab:simpletable}
+\end{center}
+\end{table}
+
+While Table \ref{tab:simpletable} was fairly simple, a more complicated table with varying column widths can also be created, as shown in Table \ref{tab:complextable}.
+
+\begin{table}[!h]
+\caption[A slightly more complex table]{A table of numbers and things. Though this caption is supposed to be detailed, I cannot think of a way to put more text here.}
+\label{tab:complextable}
+\begin{tabular}{|p{20mm}|p{40mm}|p{30mm}|p{10mm}p{10mm}p{10mm}p{10mm}|}
+\hline
+\textbf{City}&\textbf{Neighborhood}&\textbf{Time period}&\multicolumn{4}{c|}{\textbf{Results}}\\
+&	&	& $\alpha$&$\beta$&$\chi^2$&$\mu$ [m]\\
+\hline
+Oakland&Full domain&All day&1.83&-0.21&0.89&218\\
+ &Downtown&All day&1.24&-0.04&0.03&36\\
+ &Urban residential&All day&2.09&-0.23&0.67&234\\
+ \hline
+Pittsburgh&Full domain&All day&2.18&-0.27&0.52&268\\
+ & &Morning&6.42&-0.39&0.42&398\\
+ &	 &Midday&0.55&-0.14&0.05&148\\
+ & &Afternoon&4.08&-0.42&0.54&419\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{A section on footnotes}\label{sec-footnotes}
+I say, ``Footnotes are so easy!''\footnote{And you say, ``How easy are they?!''}
+
+\section{A section on bulleting and numbering}\label{sec-itemizing}
+Bulleted lists are very simple to prepare in \LaTeX{}, using the \verb|itemize| environment.
+\begin{itemize}
+\item An item
+\item Another item
+\item And so forth
+\end{itemize}
+
+The only difference between numbered and bulleted lists is the \verb|enumerate| environment instead of \verb|\itemize|. \LaTeX{} takes care of the numbering during code compilation.
+\begin{enumerate}
+\item An item
+\item Another item
+\item And so forth
+\end{enumerate}
+
+If you need the numbering reversed, use the \verb|\etaremune| environment\footnote{see the brilliance of it? ``etaremune'' is ``enumerate'' spelled backwards.}.
+\begin{etaremune}
+\item An item
+\item Another item
+\item And so forth
+\end{etaremune}
+
+\section{A section on chemical reactions}\label{chem-reac-sec}
+You can write chemical reactions using the \verb|\chemfig| package:
+\begin{center}
+\schemestart
+\chemfig{H_2O} \arrow{->[$\lambda=185$ nm]}[,1.5] \chemfig{OH} + \chemfig{H}
+\schemestop
+\end{center}
+\begin{center}
+\schemestart
+\chemfig{O_2} \arrow{->[$\lambda=185$ nm]}[,1.5] 2 O(\textsuperscript{3}P) \arrow{->[\chemfig{O_2}]} 2 O\textsubscript{3} \arrow{->[$\lambda=254$ nm]}[,1.5] 2 O(\textsuperscript{1}D) \arrow{->[\chemfig{H_2O}]} \textit{n}OH
+\schemestop
+\end{center}
+
+You can also write chemical reactions using the \verb|\chemmacros| package, which follows a slightly different syntax. Unfortunately, neither of them will check your reactions for stoichiometric balancing, so that part's on you.
+\begin{center}
+\ch{Na2SO4 ->[ H2O ] 2 Na+ + SO4^2-}
+%be sure to leave an empty line otherwise the two reactions will be mixed together
+
+\ch{( 2 Na+ ,SO4^2- ) + (Ba^2+ , 2 Cl- ) -> BaSO4 v + 2 NaCl}
+\end{center}
+
+You can also include chemical reactions (and organic structures) as a Figure, as shown in Figure \ref{fig:FuncFrag}. \textit{Note:} drawing organic structures can be time-consuming if you have too many of these. If you are writing a hard-core chemical engineering/chemistry document, you might be better off drawing the reactions in other specific software and then import them as figures into your \LaTeX{} document.
+
+\begin{figure}[h]
+\centering
+\schemestart
+\chemfig{OH}
++ \chemfig{R\textsubscript{1}-[:25,0.5]-[:-25,0.5]-[:25,0.5](-[:90,0.5])-[:-25,0.5]-[:25,0.5]-[:-25,0.5]R\textsubscript{2}}
+\arrow(reac.mid east--func.mid west){->[functionalization]}[30,2]
+\chemname{\chemfig{R\textsubscript{1}-[:25,0.5]-[:-25,0.5](=[:90,0.5]O)-[:25,0.5](-[:90,0.5])-[:-25,0.5](-[:-90,0.5]OH)-[:25,0.5]-[:-25,0.5]R\textsubscript{2}}}{lower volatility}
+\arrow(@reac.mid east--frag.mid west){->[fragmentation]}[-30,2]
+\chemname{\chemfig{R\textsubscript{1}-[:25,0.5]-[:-25,0.5](=[:90,0.5]O)}
++
+\chemfig{-[:25,0.5](=[:90,0.5]O)-[:-25,0.5]-[:25,0.5]-[:-25,0.5]R\textsubscript{2}}}{higher volatility}
+\schemestop
+\caption[Short caption for chemistry]{Caption describing what is going on in this chemical reaction.}
+\label{fig:FuncFrag}
+\end{figure}
+
+
+\newpage
+\begin{footnotesize}\singlespacing
+\renewcommand{\bibname}{References}
+\bibliographystyle{apalike}
+\addcontentsline{toc}{section}{References}
+\bibliography{ch01/ch01_REFS}
+\end{footnotesize}
