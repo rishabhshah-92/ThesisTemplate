@@ -1,0 +1,54 @@
+\documentclass[12pt]{report} %set default font size and document type. This should be the first executable line of the preamble.
+\usepackage{url}
+
+\begin{document}
+\section*{User Manual for this \LaTeX{} template}
+\textit{Rishabh Shah}
+\subsection*{Getting started}
+Thank you for downloading my \LaTeX{} thesis template. Before you can use this template, you must make sure of the following:
+\begin{enumerate}
+\item You must have a PDF reader installed on your machine. On a Mac, ``Preview'' is the default PDF reader. On Windows, if you don't have a PDF reader, you can download Foxit PDF reader for free here: \url{https://www.foxitsoftware.com/pdf-reader/}
+\item You must have LaTeX installed on your machine. The best way to do this is by installing the MiKTeX bundle from \url{https://miktex.org/download}. This will install the base LaTeX engine, as well as some TeX editors on your machine.
+\end{enumerate}
+
+\subsection*{A few tests to make sure things are in place}
+\begin{enumerate}
+\item \textit{Let's test if a PDF reader installed correctly on your machine:} in the ThesisTemplate folder you downloaded, open the "TemplateOutput.pdf" file. It should open in your default PDF reader.
+\item \textit{Let's test whether LaTeX installed correctly or not:}
+\begin{enumerate}
+\item Make sure the ThesisTemplate folder is entirely downloaded on your local machine. It does not matter if you place it on your desktop, or your downloads folder, or wherever.
+\item If you have a Mac, doubleclick the ``MAC\_{}MakeThesis.sh'' file (``WIN\_{}MakeThesis.bat'' for Windows). A Terminal (Mac) or Command Line (Windows) window should open up at this point and you will start seeing several lines of code auto-scrolling.
+\item If you have never installed/run \LaTeX{} before today, the first execution of the MakeThesis command might take a while depending on your Internet connection. This is the only time this template will require an Internet connection, because it needs to download several \LaTeX{} packages such as math, chemistry, etc. If everything works fine, subsequent executions of the MakeThesis command will not require an Internet connection.
+\item If the MakeThesis command is able to run successfully, several things should happen:
+- the Terminal/Command Line window should auto-close
+- a new PDF file called "MyThesis.pdf" should be generated in the ThesisTemplate folder, and should also auto-open.
+\end{enumerate}
+
+\end{enumerate}
+If all of this works, you're all set with regards to installation. You are now ready to start editing this template to make your own thesis!
+
+\subsection*{The structure of the thesis}
+The folder \verb|AllOtherCrap| contains all the content files that are used by \LaTeX{} in building your thesis. The \verb|Thesis\_{}Central.tex| file is the master file in which you control various aspects of your thesis such as chapter ordering, font style, formatting, paragraph styling, importing new packages, etc. During code compilation, this master file will gather all the other chapters such as the \verb|Abstract.tex|, \verb|TitleAndCopyright.tex|, etc.
+
+Each chapter is placed in a separate subfolder for sake of cleanliness. Each chapter's subfolder also contains the supporting files used in that chapter i.e., figures and references.
+
+\subsection*{Editing chapters}
+Editing chapters is fairly straightforward: open the chapter's .TeX file (e.g., \verb|ch01.tex|) in whatever \LaTeX{} editor you use, and start editing it! When you're done, make sure to hit save before closing the .TeX file. 
+
+If you wish to add new references to a chapter, you must do so separately by editing that chapter's corresponding .bib file (e.g., \verb|ch01.bib|), as instructed in the ``TemplateOutput.pdf'' file.
+
+If you wish to add new figures, you must place the figure in the relevant chapter's subfolder, and refer to them in that chapter's .TeX file using the \verb|\includegraphics| command, as demonstrated in the .TeX files provided with this template (e.g., \verb|ch01.tex|).
+
+To see how your edits look in the final typeset version of the thesis, go to the ``ThesisTemplate'' folder and execute the MAC\_{}MakeThesis.sh file (if you are using Windows, execute the WIN\_{}MakeThesis.bat) by double-clicking on it.
+
+\subsection*{Adding new chapters}
+To add a new chapter, create a new subfolder and name it whatever you like (for sake of consistency, might as well call it \verb|ch03|). To be successfully included in the final thesis, each chapter's subfolder must have a .TeX file (e.g., \verb|ch03.tex|), a .bib file (e.g., \verb|ch03_REFS.bib|), and whatever figures you wish to embed in that chapter.
+
+Next, in the \verb|AllOtherCrap| folder, open the \verb|Thesis\_{}Central.tex| file. Scroll down and find the chapter inclusion commands (\verb|\include{ch01/ch01}|). To include your new chapter, just enter another line: \verb|\include{ch03/ch03}|.
+
+Finally, go to the \verb|ThesisTemplate| folder, right-click the \verb|MAC_MakeThesis.sh| file (or \verb|WIN_MakeThesis.bat|), and open with a text editor like TextEdit in Mac, or Notepad in Windows. Find the chapter-specific lines of code (e.g., \verb|bibtex ch02/ch02.tex| and \verb|bibtex ch02/ch02.aux|), copy-paste them in a new line, and edit them accordingly for your new chapter. Hit save, but don't close the file yet...
+
+\textit{Optional, but recommended:} In the execution file, there is ``chapter-specific cleanup'' section. You can copy the chapter-specific lines of code, paste them in a new line, and edit them accordingly for your new chapter. This will make sure that all auxilary files are deleted after the code has finished compiling. Hit save, and now you may close the execution file.
+
+And now, if you double-click the execution file you just edited, it should compile your entire thesis (give it a few seconds), and the final thesis should open automatically in your default PDF reader.
+\end{document}
