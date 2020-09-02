@@ -28,7 +28,7 @@ Thank you for downloading my \LaTeX{} thesis template. Before you can use this t
 If all of this works, you're all set with regards to installation. You are now ready to start editing this template to make your own thesis!
 
 \subsection*{The structure of the thesis}
-The folder \verb|AllOtherCrap| contains all the content files that are used by \LaTeX{} in building your thesis. The \verb|Thesis\_{}Central.tex| file is the master file in which you control various aspects of your thesis such as chapter ordering, font style, formatting, paragraph styling, importing new packages, etc. During code compilation, this master file will gather all the other chapters such as the \verb|Abstract.tex|, \verb|TitleAndCopyright.tex|, etc.
+The folder \verb|AllOtherCrap| contains all the content files that are used by \LaTeX{} in building your thesis. The \verb|Thesis_Central.tex| file is the master file in which you control various aspects of your thesis such as chapter ordering, font style, formatting, paragraph styling, importing new packages, etc. During code compilation, this master file will gather all the other chapters such as the \verb|Abstract.tex|, \verb|TitleAndCopyright.tex|, etc.
 
 Each chapter is placed in a separate subfolder for sake of cleanliness. Each chapter's subfolder also contains the supporting files used in that chapter i.e., figures and references.
 
@@ -44,7 +44,7 @@ To see how your edits look in the final typeset version of the thesis, go to the
 \subsection*{Adding new chapters}
 To add a new chapter, create a new subfolder and name it whatever you like (for sake of consistency, might as well call it \verb|ch03|). To be successfully included in the final thesis, each chapter's subfolder must have a .TeX file (e.g., \verb|ch03.tex|), a .bib file (e.g., \verb|ch03_REFS.bib|), and whatever figures you wish to embed in that chapter.
 
-Next, in the \verb|AllOtherCrap| folder, open the \verb|Thesis\_{}Central.tex| file. Scroll down and find the chapter inclusion commands (\verb|\include{ch01/ch01}|). To include your new chapter, just enter another line: \verb|\include{ch03/ch03}|.
+Next, in the \verb|AllOtherCrap| folder, open the \verb|Thesis_Central.tex| file. Scroll down and find the chapter inclusion commands (\verb|\include{ch01/ch01}|). To include your new chapter, just enter another line: \verb|\include{ch03/ch03}|.
 
 Finally, go to the \verb|ThesisTemplate| folder, right-click the \verb|MAC_MakeThesis.sh| file (or \verb|WIN_MakeThesis.bat|), and open with a text editor like TextEdit in Mac, or Notepad in Windows. Find the chapter-specific lines of code (e.g., \verb|bibtex ch02/ch02.tex| and \verb|bibtex ch02/ch02.aux|), copy-paste them in a new line, and edit them accordingly for your new chapter. Hit save, but don't close the file yet...
 
